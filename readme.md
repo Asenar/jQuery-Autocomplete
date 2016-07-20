@@ -51,6 +51,7 @@ The standard jquery.autocomplete.js file is around 13KB when minified.
 * `formatResult`: `function (suggestion, currentValue) {}` custom function to
   format suggestion entry inside suggestions container, optional.
 * `groupBy`: property name of the suggestion `data` object, by which results should be grouped.
+* `suggestionDataGroup`: `boolean` add an attribute `data-group` in suggestion item
 * `maxHeight`: Maximum height of the suggestions container in pixels. Default: `300`.
 * `width`: Suggestions container width in pixels, e.g.: 300. Default: `auto`, takes input field width.
 * `zIndex`: 'z-index' for suggestions container. Default: `9999`.

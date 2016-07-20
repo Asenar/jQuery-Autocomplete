@@ -76,6 +76,7 @@
                 onSearchError: noop,
                 preserveInput: false,
                 containerClass: 'autocomplete-suggestions',
+                suggestionDataGroup : false,
                 tabDisabled: false,
                 dataType: 'text',
                 currentRequest: null,
@@ -652,6 +653,7 @@
                 value = that.getQuery(that.currentValue),
                 className = that.classes.suggestion,
                 classSelected = that.classes.selected,
+                suggestionDataGroup = that.options.suggestionDataGroup,
                 container = $(that.suggestionsContainer),
                 noSuggestionsContainer = $(that.noSuggestionsContainer),
                 beforeRender = options.beforeRender,
@@ -676,11 +678,15 @@
 
             // Build suggestions inner HTML:
             $.each(that.suggestions, function (i, suggestion) {
+                var dataGroup = "";
                 if (groupBy){
                     html += formatGroup(suggestion, value, i);
+                    if (suggestionDataGroup) {
+                        dataGroup += ' data-group="'+suggestion.data[groupBy]+'"';
+                    }
                 }
 
-                html += '<div class="' + className + '" data-index="' + i + '">' + formatResult(suggestion, value, i) + '</div>';
+                html += '<div class="' + className + '" data-index="' + i + '" ' + dataGroup + '>' + formatResult(suggestion, value, i) + '</div>';
             });
 
             this.adjustContainerWidth();
